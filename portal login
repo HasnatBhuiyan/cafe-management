@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Login & Registration - Campus Cafe</title>
+    <link rel="icon" type="image/png" href="coffee.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header">
+        <img src="coffee.png" alt="Cafe Logo" width="40" height="40">
+        <h1 class="inline-title">Campus Cafe - Staff Portal</h1>
+        <div class="nav-links">
+            <a href="login.html">Staff Portal</a>
+            <a href="index.html">Guest Login</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Staff Registration Form -->
+        <div class="box">
+            <h2>1. New Staff Registration</h2>
+            <form id="registerForm" method="POST">
+                <table class="form-table">
+                    <tr>
+                        <td>Full Name:</td>
+                        <td><input type="text" id="regName" placeholder="Enter full name"></td>
+                    </tr>
+                    <tr>
+                        <td>Staff Username:</td>
+                        <td><input type="text" id="regUser" placeholder="Choose username"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" id="regPass" placeholder="Create password"></td>
+                    </tr>
+                    <tr>
+                        <td>Role:</td>
+                        <td>
+                            <select id="regRole">
+                                <option value="">-- Select Role --</option>
+                                <option value="Cashier">Cashier</option>
+                                <option value="Barista">Barista</option>
+                                <option value="Manager">Manager</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" class="btn" value="Register Staff">
+                            <input type="reset" value="Clear">
+                        </td>
+                    </tr>
+                </table>
+                <p id="regMsg"></p>
+            </form>
+        </div>
+
+        <!-- Staff Login Form -->
+        <div class="box">
+            <h2>2. Staff Login</h2>
+            <form id="loginForm" method="POST">
+                <table class="form-table">
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" id="loginUser" placeholder="Enter username"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" id="loginPass" placeholder="Enter password"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" class="btn" value="Login to Cafe">
+                        </td>
+                    </tr>
+                </table>
+                <p id="loginMsg"></p>
+            </form>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <span>Campus Cafe Project - Web Technologies |</span>
+        <a href="index.html">Go to Dashboard</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
