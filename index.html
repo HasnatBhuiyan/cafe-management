@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<!-- SADAF'S PART: HEAD, HEADER, MENU & FOOTER  -->
+
+<head>
+    <title>Campus Cafe Management</title>
+    <link rel="icon" type="image/png" href="coffee.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header">
+        <img src="coffee.png" alt="Cafe Logo" width="40" height="40">
+        <h1 class="inline-title">Campus Cafe Management</h1>
+        <div class="nav-links">
+            <a href="#menu-section">Menu</a>
+            <a href="#order-section">Take Order</a>
+            <a href="#list-section">Order Queue</a>
+            <a href="#history-section">History</a>
+            <a href="#" id="logoutLink">Logout</a>
+        </div>
+        
+        <span id="staffWelcome" class="staff-badge">Welcome, Staff</span>
+    </div>
+
+    <div class="container">
+
+        <!--Menu Table (Hasnat) -->
+        <div id="menu-section" class="box">
+            <h2>1. Cafe Menu</h2>
+            <table border="1" class="data-table">
+                <tr>
+                    <th>Item ID</th>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Price (BDT)</th>
+                </tr>
+                <tr>
+                    <td>C-101</td>
+                    <td>Espresso Coffee</td>
+                    <td>Hot Drink</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>C-102</td>
+                    <td>Cold Coffee</td>
+                    <td>Cold Drink</td>
+                    <td>150</td>
+                </tr>
+                <tr>
+                    <td>F-201</td>
+                    <td>Chicken Sandwich</td>
+                    <td>Snacks</td>
+                    <td>180</td>
+                </tr>
+                <tr>
+                    <td>F-202</td>
+                    <td>Chocolate Muffin</td>
+                    <td>Dessert</td>
+                    <td>100</td>
+                </tr>
+            </table>
+        </div>
+        <!-- NOWSHIN'S PART: MULTI-ITEM ORDER FORM      -->
+        
+        <div id="order-section" class="box">
+            <h2>2. Customer Order Form (Select Multiple Items)</h2>
+            <form id="orderForm" method="GET">
+                <table class="form-table">
+                    <tr>
+                        <td>Customer Name:</td>
+                        <td><input type="text" id="custName" name="custName" placeholder="Enter name"></td>
+                    </tr>
+                    <tr>
+                        <td>Table Number:</td>
+                        <td><input type="number" id="tableNo" name="tableNo" placeholder="1 to 10"></td>
+                    </tr>
+                    <tr>
+                        <td>Select Items &amp; Qty:</td>
+                        <td>
+                            <table border="1" class="data-table">
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                                <tr>
+                                    <td>Espresso Coffee</td>
+                                    <td>120 BDT</td>
+                                    <td><input type="number" id="qtyEspresso" value="0" min="0" max="20"></td>
+                                </tr>
+                                <tr>
+                                    <td>Cold Coffee</td>
+                                    <td>150 BDT</td>
+                                    <td><input type="number" id="qtyCold" value="0" min="0" max="20"></td>
+                                </tr>
+                                <tr>
+                                    <td>Chicken Sandwich</td>
+                                    <td>180 BDT</td>
+                                    <td><input type="number" id="qtySandwich" value="0" min="0" max="20"></td>
+                                </tr>
+                                <tr>
+                                    <td>Chocolate Muffin</td>
+                                    <td>100 BDT</td>
+                                    <td><input type="number" id="qtyMuffin" value="0" min="0" max="20"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Order Type:</td>
+                        <td>
+                            <input type="radio" name="orderType" value="Dine-In" checked> Dine-In
+                            <input type="radio" name="orderType" value="Takeaway"> Takeaway
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" class="btn" value="Place Order">
+                            <input type="reset" value="Clear">
+                        </td>
+                    </tr>
+                </table>
+                <p id="errorMsg"></p>
+            </form>
+        </div>
+
+        <!-- ASHIL'S PART: ORDER QUEUE & DATE HISTORY   -->
+               
+        <div id="list-section" class="box">
+            <h2>3. Active Orders Queue</h2>
+            <table border="1" class="data-table" id="orderTable">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Table No</th>
+                        <th>Ordered Items &amp; Qty</th>
+                        <th>Total (BDT)</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="orderBody">
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div id="history-section" class="box">
+            <h2>4. Saved Order History (By Date &amp; Time)</h2>
+            <p>
+                Total Saved Orders: <strong id="historyCount">0</strong>
+                
+                <span id="adminDeleteControls">
+                    | Select Date:
+                    <select id="deleteDateSelect">
+                        <option value="">-- Choose Date --</option>
+                    </select>
+                    <button type="button" id="deleteDayBtn" class="btn">Delete Selected Day's Orders</button>
+                    <button type="button" id="clearHistoryBtn" class="btn">Clear All</button>
+                </span>
+            </p>
+            <p id="historyMsg"></p>
+            <table border="1" class="data-table" id="historyTable">
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Date &amp; Time</th>
+                        <th>Customer Name</th>
+                        <th>Table No</th>
+                        <th>Ordered Items &amp; Qty</th>
+                        <th>Total (BDT)</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Footer (Hasnat) -->
+    <div id="footer">
+        <span>Campus Cafe Project |</span>
+        <a href="#top">Back to Top</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
